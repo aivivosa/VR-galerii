@@ -19,44 +19,50 @@ new Vue({
             <a-asset-item id="mannekeen" src="./assets/models/mannequin.obj"></a-asset-item>
             <a-asset-item id="mannekeen-mtl" src="./assets/models/mannequin.mtl"></a-asset-item>
 
-            <a-asset-item id="chandelier" src="./assets/models/Artichoke_Lamp.obj"></a-asset-item>
-            <a-asset-item id="chandelier-mtl" src="./assets/models/Artichoke_Lamp.mtl"></a-asset-item>
+            <a-asset-item id="chandelier" src="./assets/models/Chand.obj"></a-asset-item>
+            <a-asset-item id="chandelier-mtl" src="./assets/models/Chand.mtl"></a-asset-item>
             
-            <a-asset-item id="tablet" src="./assets/models/tablet.obj"></a-asset-item>
-            <a-asset-item id="tablet-mtl" src="./assets/models/tablet.mtl"></a-asset-item>
+           
             
             <a-asset-item id="aken" src="./assets/models/aken.obj"></a-asset-item>
             <a-asset-item id="aken-mtl" src="./assets/models/aken.mtl"></a-asset-item>
           </a-assets>
         </template>
         <!-- blenderist imporditud .obj-mudel koos .mtl-materjalidega; vt a-assets ülalpool -->
-        <Box  class="hover"
-              position="3 3 3" 
-              shadow="cast: true" 
-              event-set__enter="_event: mouseenter; color: pink"
-              event-set__leave="_event: mouseleave; color: red"
-               />
-        <a-sphere dynamic-body material="color: #333; metalness: 0.6; roughness: 0.1" v-for="(sphere, index) in 10" :position='"3 0." + index + " 3"' :radius='index/10'></a-sphere>
+        
+       
+        <a-sphere dynamic-body material="color: red ; metalness: 0.6; roughness: 0.1" v-for="(sphere, index) in 10" :position='"3 0." + index + " 3"' :radius='index/10'></a-sphere>
               
-        <a-entity dynamic-body class="mannekeen" obj-model="obj: #mannekeen; mtl: #mannekeen-mtl "></a-entity>
+     
 
-        <a-entity dynamic-body position="4 2.5 -2" scale="0.5 0.5 0.5" rotation="0 -156 0" class="juku" obj-model="obj: #juku; mtl: #juku-mtl"></a-entity>
 
-        <a-entity class="nunnu" obj-model="obj: #nunnu"></a-entity>
+
+
+
+
+
+
+
+
+
+
+
         <!-- uus komponent Rig, kus sees on kõik kaameraga seonduv. -->
         <Rig position="0 0 4">
           <!-- Rig-i sisse võib panna asju, mis peaks liikuma koos kaameraga, märksõna HUD -->
           <!-- Hetkel on siin tekstid, mis muutuvad nähtavaks, kui vaatad õige asja peale -->
+          
           <a-entity id="pilditekst" visible="false" position="0 -0.2 -0.5">
             <a-text 
             font="./assets/signika/Signika-SemiBold-msdf.json" 
             negate="false"
-            value="Aivi Võsa graafikatööde näitus" width="1" align="center" color="red" />
+            value="Aivi Võsa graafika" width="1" align="center" color="red" />
             <a-plane material="shader: flat" color="white" scale="0.5 0.1 0" />
           </a-entity>
+          
           <a-text 
           id="kuubikutekst" 
-          value="kuubik" 
+          value=" " 
           width="1" 
           align="center" 
           color="#FF66CC" 
@@ -65,6 +71,7 @@ new Vue({
           font="./assets/signika/Signika-SemiBold-msdf.json" 
           negate="false"
           />
+
           <a-text 
           id="plakatitekst" 
           value="Plakat BOHO" 
@@ -79,7 +86,7 @@ new Vue({
 
           <a-text 
           id="plakatitekst1" 
-          value="Plakat KARU" 
+          value="Plakat MOEJOONIS" 
           width="1" 
           align="center" 
           color="#FF66CC" 
@@ -91,7 +98,7 @@ new Vue({
 
           <a-text 
           id="plakatitekst2" 
-          value="Plakat TAPEET" 
+          value="Plakat MOEJOONIS" 
           width="1" 
           align="center" 
           color="#FF66CC" 
@@ -113,14 +120,27 @@ new Vue({
           negate="false"
           />
 
+          <a-text 
+          id="plakatitekst4" 
+          value="Graafiline leht KARU" 
+          width="1" 
+          align="center" 
+          color="#FF66CC" 
+          visible="false" 
+          position="0 -0.05 -0.5" 
+          font="./assets/signika/Signika-SemiBold-msdf.json" 
+          negate="false"
+          />
+
           <a-box material="visible: false" position="0 0 -0.5" scale="0.6 2 0.3" static-body class="box"></a-box>
         </Rig>
         <!-- -->
         <Ceiling position="0 5 0">
         <a-entity class="keskkonnavalgus" light="type: point; color: #FFFFFF; intensity: 0.7;"  position="0 -2 0" rotation="0 0 0">
           <a-entity material="color: white; emissive: white; emissionIntensity: 0.3;" class="chandelier" position="0 -2.595 0" scale="0.023 0.023 0.023" obj-model="obj: #chandelier"></a-entity>
-        </a-entity>            
+        </a-entity> 
         </Ceiling>
+
       	<Wall position="0 0 -10" w="20" h="5">
           <!-- seina komponenti on muudetud nii, et tema 'sisse' saab panna asju, mis peaks ta peal rippuma, vaikimisi täpselt keskel -->
           <!-- allpoolse a-plane-i küljes on evendid e. sündmused, mis muudavad selle peale vaadates õige teksti nähtavaks (ja ka nähtamatuks) -->
@@ -133,7 +153,9 @@ new Vue({
               class="hover" 
               event-set__enter="_event: mouseenter; _target: #plakatitekst; visible: true"
               event-set__leave="_event: mouseleave; _target: #plakatitekst; visible: false"
+
           ></a-plane>
+
           <a-plane
               position="2 0 0" 
               scale="4 2 0"
@@ -141,63 +163,45 @@ new Vue({
               shadow="cast: true"
 
               class="hover" 
-              event-set__enter="_event: mouseenter; _target: #pilditekst; visible: true"
-              event-set__leave="_event: mouseleave; _target: #pilditekst; visible: false"
+              event-set__enter="_event: mouseenter; _target: #plakatitekst; visible: true"
+              event-set__leave="_event: mouseleave; _target: #plakatitekst; visible: false"
           ></a-plane>
         </Wall>
         
         <Wall position="-10 0 -8" rotation="0 90 0" w="6" h="5">
         
-        <a-plane 
-              position="-2 0 0"
-              scale="4 2 0"
-              material="src: ./assets/images/photoshopkoolitoopilt.jpg"
-              shadow="cast: true" 
-          
-              class="hover" 
-              event-set__enter="_event: mouseenter; _target: #plakatitekst3; visible: true"
-              event-set__leave="_event: mouseleave; _target: #plakatitekst3; visible: false"
-          ></a-plane>
+       
           <a-plane
-              position="2 0 0" 
+              position="-1 0 0" 
               scale="4 2 0"
-              material="src: ./assets/images/photoshopkoolitoo2.jpg"
+              material="src: ./assets/images/karumomm2.png"
               shadow="cast: true"
 
               class="hover" 
-              event-set__enter="_event: mouseenter; _target: #pilditekst; visible: true"
-              event-set__leave="_event: mouseleave; _target: #pilditekst; visible: false"
+              event-set__enter="_event: mouseenter; _target: #plakatitekst4; visible: true"
+              event-set__leave="_event: mouseleave; _target: #plakatitekst4; visible: false"
           ></a-plane>
         
         </Wall>
         <Wall position="-10 0 5" rotation="0 90 0" w="10" h="5">
-        <a-plane 
-              position="-2 0 0"
-              scale="4 2 0"
-              material="src: ./assets/images/kingad2blog.jpg"
-              shadow="cast: true" 
-          
-              class="hover" 
-              event-set__enter="_event: mouseenter; _target: #plakatitekst2; visible: true"
-              event-set__leave="_event: mouseleave; _target: #plakatitekst2; visible: false"
-          ></a-plane>
+       
           <a-plane
-              position="2 0 0" 
+              position="0 0 0" 
               scale="4 2 0"
-              material="src: ./assets/images/photoshopkoolitoo2.jpg"
+              material="src: ./assets/images/moejoonis A4 2.png"
               shadow="cast: true"
 
               class="hover" 
-              event-set__enter="_event: mouseenter; _target: #pilditekst; visible: true"
-              event-set__leave="_event: mouseleave; _target: #pilditekst; visible: false"
+              event-set__enter="_event: mouseenter; _target: #plakatitekst1; visible: true"
+              event-set__leave="_event: mouseleave; _target: #plakatitekst1; visible: false"
           ></a-plane>
  
         </Wall>
         <Wall position="10 0 0" rotation="0 -90 0" w="20" h="5">
         <a-plane 
-              position="-2 0 0"
-              scale="4 2 0"
-              material="src: ./assets/images/photoshopkoolitoopilt.jpg"
+              position="4 0.2 0"
+              scale="1.5 2 0"
+              material="src: ./assets/images/moejoonis A4 5.png"
               shadow="cast: true" 
           
               class="hover" 
@@ -205,18 +209,46 @@ new Vue({
               event-set__leave="_event: mouseleave; _target: #plakatitekst1; visible: false"
           ></a-plane>
           <a-plane
-              position="2 0 0" 
-              scale="4 2 0"
-              material="src: ./assets/images/karumomm2.png"
+              position="1 0.2 0" 
+              scale="1.5 2 0"
+              material="src: ./assets/images/moejoonis A4 3.png"
               shadow="cast: true"
 
               class="hover" 
-              event-set__enter="_event: mouseenter; _target: #pilditekst; visible: true"
-              event-set__leave="_event: mouseleave; _target: #pilditekst; visible: false"
+              event-set__enter="_event: mouseenter; _target: #plakatitekst1; visible: true"
+              event-set__leave="_event: mouseleave; _target: #plakatitekst1; visible: false"
           ></a-plane>
+     
+          <a-plane
+              position="-2 0 0" 
+              scale="1.5 2 0"
+              material="src: ./assets/images/moejoonis A4 1.png"
+              shadow="cast: true"
+
+              class="hover" 
+              event-set__enter="_event: mouseenter; _target: #plakatitekst1; visible: true"
+              event-set__leave="_event: mouseleave; _target: #plakatitekst1; visible: false"
+          ></a-plane>
+
+          <a-plane
+          position="-5 0 0" 
+          scale="1.5 2 0"
+          material="src: ./assets/images/moejoonis A4 4.png"
+          shadow="cast: true"
+
+          class="hover" 
+          event-set__enter="_event: mouseenter; _target: #plakatitekst1; visible: true"
+          event-set__leave="_event: mouseleave; _target: #plakatitekst1; visible: false"
+      ></a-plane>
+
         </Wall>
 
+
         <WallWindow class="aknaga sein" position="-5 0 10" rotation="0 -180 0">  </WallWindow>
+
+
+
+
         <WallWindow class="aknaga sein" position="5 0 10" rotation="0 -180 0">  </WallWindow>
         <Floor position="0 0.01 0" />
         <a-entity class="prose" light="type: spot; angle: 30; penumbra: 0.3; intensity: 0.3; color: #fff; castShadow: true;"  position="-2 0.2 0" rotation="15 180 0">
